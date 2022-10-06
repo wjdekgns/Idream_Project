@@ -1,0 +1,226 @@
+/* 메인 인트로 */
+#section01 {
+    margin: 0 auto;
+}
+#bg {
+   	margin: 0 auto;
+   	background-repeat: no-repeat;
+   	background-position: center center;
+}
+
+#bg img {
+	width: 100%;
+   	height: 100%;
+   	background-repeat: no-repeat;
+   	background-position: center center;
+}
+
+#bg_txt {
+	font-family: 'ONE-Mobile-POP';
+    width: 50%;
+    background-color: #5454544a;
+    color: #fff;
+    font-size: 60px;
+    line-height: 70px;
+    text-align: center;
+    padding: 40px;
+    float: left;
+    margin-top: 180px;
+    margin-left: 150px;
+    text-shadow: 7px 6px #57a4c8;
+}
+
+.notice h2, .notice a {
+	font-family: 'NanumBarunGothic';
+}
+
+.notice {
+	margin: 0 auto;
+	background-color: #333;
+}
+
+/* 서브 */
+
+@media (min-width : 367px) and (max-width: 990px){
+	.row {
+	    display: block;
+	}
+	.col-lg-3 {
+		width: 100% !important;
+		margin-bottom: 20px;
+	}
+	
+}
+
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 80%;
+    margin: 60px auto;
+}
+@media (min-width: 1400px)
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1320px;
+}
+
+@media (min-width: 1200px)
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1140px;
+}
+@media (min-width: 992px)
+.container, .container-lg, .container-md, .container-sm {
+    max-width: 960px;
+}
+@media (min-width: 768px)
+.container, .container-md, .container-sm {
+    max-width: 720px;
+}
+@media (min-width: 576px)
+.container, .container-sm {
+    max-width: 540px;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+@media (min-width: 992px)
+.col-lg-3 {
+    flex: 0 0 auto;
+}
+
+.col-lg-3 {
+    width: 25%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+
+.col-lg-3 h4, .col-lg-3 h4 a {
+	font-family: 'GyeonggiTitleM';
+	color: #333;
+}
+
+.col-lg-3:hover h4, .col-lg-3:hover h4 a {
+	color: #fff;
+}
+
+.col-lg-3:hover p, .col-lg-3:hover p a {
+	color: #fff;
+}
+
+.col-lg-3 p, .col-lg-3 p a {
+	font-family: 'NanumBarunGothic';
+	color: #333;
+}
+
+.services {
+  padding-top: 130px;
+  position: relative;
+}
+
+.services  .section-heading p {
+  margin-top: 10px;
+  margin-left: 18%;
+  margin-right: 18%;
+}
+
+.services .container-fluid {
+  padding-left: 65px;
+  padding-right: 65px;
+}
+
+.services .section-heading {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services .section-heading .line-dec {
+  margin: 0 auto;
+}
+
+.service-item {
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  background-color: #fff;
+  border-radius: 10px;
+  border-top-right-radius: 50px;
+  transition: all .3s;
+}
+
+.service-item .icon {
+  margin-left: 0px;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  transition: all .3s;
+}
+
+.service-item h4 {
+  transition: all .3s;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.service-item p {
+  transition: all .3s;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 20px;
+}
+
+.service-item:hover h4,
+.service-item:hover p,
+.service-item:hover .text-button a {
+  color: #fff;
+}
+
+.first-service .icon {
+  background-image: url(../img/service-icon-01.png);
+}
+
+.first-service:hover .icon {
+  background-image: url(../img/service-icon-hover-01.png);
+}
+
+.second-service .icon {
+  background-image: url(../img/service-icon-02.png);
+}
+
+.second-service:hover .icon {
+  background-image: url(../img/service-icon-hover-02.png);
+}
+
+
+.third-service .icon {
+  background-image: url(../img/service-icon-03.png);
+}
+
+.third-service:hover .icon {
+  background-image: url(../img/service-icon-hover-03.png);
+}
+
+.fourth-service .icon {
+  background-image: url(../img/service-icon-04.png);
+}
+
+.fourth-service:hover .icon {
+  background-image: url(../img/service-icon-hover-04.png);
+}
+
+.service-item:hover {
+  background-image: url(../img/service-bg.jpg);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

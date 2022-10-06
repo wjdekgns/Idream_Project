@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- MyBatis xml 파일 작성 시 반드시 mapper 태그의 namespace 속성값을
+     Mapper 인터페이스와 동일한 이름으로 설정해야 합니다. -->
+<mapper namespace="org.zerock.mapper.TipMapper">
+
+	<!-- Page338 아래 BoardMapper.xml의 목록과 데이터 개수 처리 소스 코딩  -->
+	<!-- sql태그와 include 태그 활용 검색 데이터의 개수 처리 -->
+	<!-- MyBatis는 sql 태그를 이용해서 SQL의 일부를 별도로 보관하고,
+	         필요한 경우에 include 시키는 형태로 사용할 수 있습니다. -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>  
+
+	<select id="getListWithPaging" resultType="org.zerock.domain.TipVO">
+	<!-- XML의 CDATA 섹션은 XML에서 사용할 수 없는 부등호를 사용하기 위함인데,
+	     XML을 사용할 경우에는 lt 특수 문자, gt 특수 문자는 태그로 인식하는데,
+	         이로 인해 생기는 문제를 막기 위함입니다. -->
+	<!-- 페이지 번호(pageNum)와 데이터 수량(amount)를 적용해 줍니다. -->
+	
+	<!-- page335 연습할때 아래 구문은 주석 처리를 해줍니다. -->
+	<!-- 
+	<![CDATA[
+	SELECT 
+		BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+	FROM (
+			SELECT /*+ INDEX_DESC(tbl_board pk_board) */
+			ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
+			FROM tbl_board WHERE ROWNUM <= #{pageNum}*#{amount}
+			) WHERE RN > (#{pageNum} -1) * #{amount}
+	]]>
+	</select>	
+	 -->
+	 <!-- page335 연습할때 아래 구문을 코딩 추가 수정해 주시기 바랍니다. -->
+	 <!-- 검색 조건이 3가지이르면 총 6가지의 조합이 가능하지만, 각 문자열을 이용해서
+	            검색 조건을 결합하는 형태로 하면 3개의 동적 SQL 구문만으로도 처리가 가능합니다. -->
+	 <!-- foreach 태그를 이용해서 검색 조건을 처리하는데 typeArr 속성을 이용합니다.
+	      MyBatis는 원하는 속성을 찾을 때 getTypeArr() 메서드와 같이 이름에 기반을
+	           두어서 검색하기 때문에 Criteria에서 만들어둔 getTypleArr() 메서드 결과문인
+	            문자열의 배열이 foreach의 대상이 됩니다. 참고로, MyBatis는 엄격하게
+	      Java Beans 규칙을 따르지 않고, get/set 메서드만을 활용하는 방식입니다.
+	   	  choose 안쪽의 동적 SQL은 'OR title... OR content... OR writer...'
+  	   	   와 같은 구문을 만들어내게 됩니다. 그래서 바깥쪽에서는 trim을 이용해서 맨 앞에서
+	   	   생성되는 'OR'를 없애줍니다.
+	   -->
+	 <!-- Page483 BoardMapper xml 게시물의 목록을 처리하는 부분에서는
+	      새롭게 추가된 replycnt칼럼을 가져오도록 인라인뷰 내에 추가하고,
+	      바깥쪽 SELECT에도 추가합니다. -->
+	 <![CDATA[
+	SELECT 
+		BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, replyCnt
+	FROM (
+			SELECT /*+ INDEX_DESC(tbl_board pk_board) */
+			ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE, replyCnt
+			FROM tip_table
+			WHERE
+	]]>
+	
+	<!-- Page339 include 태그 삽입 적용함 -->
+	<include refid="criteria"></include>
+	
+	<!-- Page339 연습할때 아래 구문은 주석 처리함
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item="type" collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						title like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						content like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						writer like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>		
+		</foreach>
+	</trim>
+	 -->
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} -1) * #{amount} 
+		]]>
+	</select>	
+		
+	<!-- select 태그의 id 속성값은 메서드의 이름과 일치하게 작성합니다.
+	     resultType 속성의 값은 select 쿼리의 결과를 특정 클래스의 객체로
+  	          만들기 위해서 설정합니다. -->	
+	<select id="getList" resultType="org.zerock.domain.TipVO">
+	<!-- MyBatis xml 파일 작성에 사용한 CDATA 부분은 XML에서 부등호를
+	          사용하기 위해서 사용합니다. -->
+	<![CDATA[
+		SELECT * FROM tip_table WHERE bno > 0
+	]]>
+	</select>
+	
+	<!-- MyBatis는 내부적으로 JDBC의 PreparedStatement를 활용하고,
+	         필요한 파라미터를 처리하는 ?에 대한 치환은 #{속성}을 이용해서 처리합니다. -->
+	<!-- insert만 처리되고 생성된 PK 값을 알 필요가 없는 경우 -->
+	<insert id="insert">
+		insert into tip_table(bno, title, content, writer)  values(seq_tip.nextval, #{title}, #{content}, #{writer})	
+	</insert>
+	
+	<!-- insert문이 실행되고 생성된 PK 값을 알아야 하는 경우 -->
+	<insert id="insertSelectKey">
+	<!-- selectKey는 주로 PK값을 미리(BEFORE) SQL을 통해서 처리해 두고
+	          특정한 이름으로 결과를 보관하는 방식입니다. -->
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+			select seq_tip.nextval from dual		
+		</selectKey>
+		insert into tip_table (bno, title, content, writer) values(#{bno}, #{title}, #{content}, #{writer})	
+	</insert>   
+	
+	<select id="read" resultType="org.zerock.domain.TipVO">
+		select * from tip_table where bno = #{bno}
+		
+	</select>
+	
+	<delete id="delete">
+		delete from tip_table where bno = #{bno}		
+	</delete>	
+	
+	<!-- update 칼럼이 최종 수정 시간을 의미하는 칼럼이기 때문에 현재 시간으로 변경해 줍니다.
+	     regdate 칼럼은 최초 등록 생성 시간이므로 수정하지 않습니다. #{title}과 같은
+	          부분은 파라미터로 전달된 BoardVO 객체의 getTitle()과 같은 메서드들을
+	          호출해서 파라미터들이 처리 됩니다. -->	
+	<update id="update">
+		update tip_table set title = #{title}, content = #{content}, writer = #{writer}, updateDate = sysdate where bno = #{bno}	
+	</update>
+	
+	<!-- page323 위에 BoardMapper xml 파일에 소스 코딩,
+	     page339 소스 코딩할 때 아래 구문은 주석 처리 바랍니다. -->
+	<!-- 
+	<select id="getTotalCount" resultType="int">
+		select count(*) from tbl_board where bno > 0	
+	</select>
+	 -->	  
+	  
+	 <!-- Page339  소스 하단 select 태그 id="getTotalCount" 소스 코딩 -->
+	 <!-- 위에 sql 태그는 id 속성을 이용해서 필요한 경우에 동일한 SQL의 일부를
+	           재사용할 수 있게 합니다. -->
+	 <select id="getTotalCount" resultType="int">
+	 select count(*) from tip_table
+	 where
+	 <include refid="criteria"></include>
+	 
+	 bno > 0
+	 
+	 </select>
+	 
+	 <!-- Page483 BoardMapper xml 파일에 update 구문 추가 -->
+	 <update id="updateReplyCnt">
+	 	update tip_table set replyCnt = replyCnt + #{amount} where bno = #{bno}	 
+	 </update>
+	 
+	  
+</mapper>

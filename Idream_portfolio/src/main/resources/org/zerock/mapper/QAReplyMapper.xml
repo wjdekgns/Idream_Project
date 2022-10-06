@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.QAReplyMapper">
+
+	<insert id="insert">
+		insert into qa_reply(rno, qno, reply, replyer)
+		values(seq_re_qa.nextval, #{qno}, #{reply}, #{replyer})	
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.QAReplyVO">
+		select * from qa_reply where rno = #{rno}
+	</select>
+	
+	<delete id="delete">
+		delete from qa_reply where rno = #{rno}	
+	</delete>
+	
+	<update id="update">
+		update qa_reply set reply = #{reply}, updatedate = sysdate where rno = #{rno}	
+	</update>
+	
+	<!-- 우선, 특정 게시물의 댓글을 가져오는 SQL 쿼리문 작성을 합니다.
+	     XML에서 '#{qno}'가 @Param("qno")와 매칭되어서 처리되는 점을 주목해 주시기 바랍니다. -->
+	<!-- Page431 연습할 때 아래 getListWithPaging 중복 코드는 주석 처리 합니다. -->
+	<!-- 
+	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+		select rno, qno, reply, replyer, replyDate, updatedate
+		from tbl_reply where qno = #{qno} order by rno asc
+	</select>
+	 -->
+	
+	<!-- Page431 연습할 때 위에 getListWithPaging 중복 코드는 주석 처리 합니다. -->
+	<!-- Page431 ReplyMapper xml 파일 소스 적용 -->
+	<select id="getListWithPaging" resultType="org.zerock.domain.QAReplyVO">
+	<![CDATA[
+	select rno, qno, reply, replyer, replydate, updatedate
+    from
+	   (
+		select /*+ INDEX(tbl_reply idx_reply) */
+		rownum rn, rno, qno, reply, replyer, replyDate, updatedate
+	from qa_reply
+	where qno = #{qno}
+		and rno > 0
+		and rownum <= #{cri.pageNum} * #{cri.amount}
+	) where rn > (#{cri.pageNum} -1) * #{cri.amount}
+	]]>	
+	
+	</select>
+	
+	<!-- Page 433 ReplyMapper xml 파일에 id 속성값이 getCountByqno인
+	     select 태그를 추가합니다. -->
+	<select id="getCountByqno" resultType="int">
+		<![CDATA[
+			select count(rno) from qa_reply where qno = #{qno}
+		]]>		
+	</select>
+	
+	
+	
+	
+
+</mapper>

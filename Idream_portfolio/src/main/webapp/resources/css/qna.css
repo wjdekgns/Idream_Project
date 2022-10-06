@@ -1,0 +1,163 @@
+/* Fontawsome 4.7 
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.mis.css');
+
+
+/*Gogle Web font 
+@import url('https://fonts.gogleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR' , sans-serif;
+    margin: 0;
+    left: 1.6em;
+    font-weight: 300;
+    font-size: 20px;
+    
+}
+
+.fap{
+    height: 100vh;
+    background-color: #ffeb60;
+}
+
+.faq-inner{
+    margin: 0 auto;
+    width: 60%;
+}
+
+
+.faq-inner h1{
+    font-size: 100px;
+    text-align: center;
+    margin-top: 0;
+}
+/*
+.accordion{
+
+}
+*/
+.accordion-item{
+    background-color: #fdfdfd;
+    padding: 15px 25px;
+    border-radius: 25px;
+    box-shadow: 0 0 25px rgb(118 118 118 / 20%);
+    border: 1px solid #aad5ff;
+    margin-bottom: 20px;
+}
+
+.accordion-item .title{
+    font-weight: bold;
+    cursor: pointer;
+    
+}
+
+.accordion-item .title:after{
+    content:'\f107';
+    font-family: fontawesome;
+    float: right;
+    margin-top: 4px;
+    
+}
+.accordion-item .title.active{
+    padding-bottom: 15px;
+}
+
+.accordion-item .title.active:after{
+    transform: rotateX(180deg);
+}
+
+
+.accordion-item .content{
+    border-top: 1px solid #666;
+    font-size: 16px;
+    padding-top: 15px;
+    display: none;
+} 
+
+/*질문*/
+.reserve-store {
+    background-image: url("../img/질문하기백그라운드.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .reserve-store .inner {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reserve-store .medal {
+    width: 334px;
+    height: 334px;
+    perspective: 600px;
+  }
+  .reserve-store .medal .front {
+    position: absolute;
+    transition: 1s;
+  }
+  .reserve-store .medal .back {
+    position: absolute;
+    transition: 1s;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+  }
+  .reserve-store .medal:hover .front {
+    transform: rotateY(180deg);
+}
+  .reserve-store .medal:hover .back {
+    transform: rotateY(0deg);
+}
+.reserve-store .medal .back .btn {
+    position: absolute;
+    top: 240px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.visual {
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+#qa .inner {
+	width: 60%;
+	height: auto;
+	padding: 50px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.child1 {
+	width: 30%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.inner p:first-child {
+	line-height: 45px;
+	width: 70%;
+	float: left;
+}
+
+.txt01 {
+    font-family: 'ONE-Mobile-POP';
+    font-size: 40px;
+    font-size: 3rem;
+}
+
+.txt02 {
+    font-family: 'NanumBarunGothic';
+    font-size: 35px;
+    font-size: 1.5rem;
+}
+
+.or {
+	color: #d94925;
+}
+

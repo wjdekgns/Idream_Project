@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.QAAttachMapper">
+
+	<insert id="insert">
+		insert into qa_attach (uuid, uploadpath, filename,
+		filetype, qno)
+		values (#{uuid}, #{uploadPath}, #{fileName},
+		#{fileType}, #{qno} )
+	</insert>
+
+	<delete id="delete">
+
+		delete from qa_attach where uuid = #{uuid}
+
+	</delete>
+
+	<select id="findByqno"
+		resultType="org.zerock.domain.QAAttachVO">
+		select * from qa_attach where qno = #{qno}
+	</select>
+
+	<delete id="deleteAll">
+
+		delete qa_attach where qno = #{qno}
+
+	</delete>
+
+    <!-- Page600 sysdate에서 1을 뺀 어제 날짜 데이터 처리 설정 --> 
+	<select id="getOldFiles"
+		resultType="org.zerock.domain.QAAttachVO">
+
+		select * from qa_attach where uploadpath = to_char(sysdate -1 ,'yyyy\mm\dd')
+
+	</select>
+
+
+</mapper>

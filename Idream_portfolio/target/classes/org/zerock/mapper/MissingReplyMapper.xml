@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MissingReplyMapper">
+
+	<insert id="insert">
+		insert into missing_reply(rno, bno, reply, replyer)
+		values(seq_re_missing.nextval, #{bno}, #{reply}, #{replyer})	
+	</insert>
+	
+	<select id="read" resultType="org.zerock.domain.MissingReplyVO">
+		select * from missing_reply where rno = #{rno}
+	</select>
+	
+	<delete id="delete">
+		delete from missing_reply where rno = #{rno}	
+	</delete>
+	
+	<update id="update">
+		update missing_reply set reply = #{reply}, updatedate = sysdate where rno = #{rno}	
+	</update>
+	
+	<!-- 우선, 특정 게시물의 댓글을 가져오는 SQL 쿼리문 작성을 합니다.
+	     XML에서 '#{bno}'가 @Param("bno")와 매칭되어서 처리되는 점을 주목해 주시기 바랍니다. -->
+	<!-- Page431 연습할 때 아래 getListWithPaging 중복 코드는 주석 처리 합니다. -->
+	<!-- 
+	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+		select rno, bno, reply, replyer, replyDate, updatedate
+		from tbl_reply where bno = #{bno} order by rno asc
+	</select>
+	 -->
+	
+	<!-- Page431 연습할 때 위에 getListWithPaging 중복 코드는 주석 처리 합니다. -->
+	<!-- Page431 ReplyMapper xml 파일 소스 적용 -->
+	<select id="getListWithPaging" resultType="org.zerock.domain.MissingReplyVO">
+	<![CDATA[
+	select rno, bno, reply, replyer, replydate, updatedate
+    from
+	   (
+		select /*+ INDEX(tbl_reply idx_reply) */
+		rownum rn, rno, bno, reply, replyer, replyDate, updatedate
+	from missing_reply
+	where bno = #{bno}
+		and rno > 0
+		and rownum <= #{cri.pageNum} * #{cri.amount}
+	) where rn > (#{cri.pageNum} -1) * #{cri.amount}
+	]]>	
+	
+	</select>
+	
+	<!-- Page 433 ReplyMapper xml 파일에 id 속성값이 getCountByBno인
+	     select 태그를 추가합니다. -->
+	<select id="getCountByBno" resultType="int">
+		<![CDATA[
+			select count(rno) from missing_reply where bno = #{bno}
+		]]>		
+	</select>
+	
+	
+	
+	
+
+</mapper>

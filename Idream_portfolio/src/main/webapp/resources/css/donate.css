@@ -1,0 +1,191 @@
+/*BADGES*/
+header .badges {
+    position: absolute;
+    top: 342px;
+    right: 12px;
+}
+header .badges .badge {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+/*SCROLL TO TOP*/
+#to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 88px;
+    z-index: 9;
+    width: 42px;
+    height: 42px;
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header img{
+    width : 500px;
+    height: 170px;
+}
+
+#header p{
+    font-size : 70px;
+    margin-top : 50px;
+    margin-bottom: 2%;
+
+}
+
+.visual {
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+#qa .inner {
+	width: 60%;
+	height: auto;
+	padding: 50px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.child1 {
+	width: 30%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.inner p:first-child {
+	line-height: 45px;
+	width: 70%;
+	float: left;
+}
+
+.txt01 {
+    font-family: 'ONE-Mobile-POP';
+    font-size: 40px;
+    font-size: 3rem;
+}
+
+.txt02 {
+    font-family: 'NanumBarunGothic';
+    font-size: 35px;
+    font-size: 1.5rem;
+}
+
+.or {
+	color: #d94925;
+}
+
+.back {
+	width: 60%;
+    height: auto;
+    padding: 50px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+button {
+	font-family: 'NanumBarunGothic';
+	font-size: 1rem;
+}
+
+.button--border-thin {
+  border: 1px solid;
+}
+
+.btn {
+	cursor: pointer;
+}
+
+/* Winona */
+.button--winona {
+  overflow: hidden;
+  padding: 0;
+  -webkit-transition: border-color 0.3s, background-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona::after {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: #3f51b5;
+  -webkit-transform: translate3d(0, 25%, 0);
+  transform: translate3d(0, 25%, 0);
+}
+.button--winona > span {
+  display: block;
+}
+.button--winona.button--inverted {
+  color: #7986cb;
+}
+.button--winona.button--inverted:after {
+  color: #fff;
+}
+.button--winona::after,
+.button--winona > span {
+  padding: 1em 2em;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona:hover {
+  border-color: #3f51b5;
+  background-color: rgba(63, 81, 181, 0.1);
+}
+.button--winona.button--inverted:hover {
+  border-color: #21333C;
+  background-color: #21333C;
+}
+.button--winona:hover::after {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.button--winona:hover > span {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -25%, 0);
+  transform: translate3d(0, -25%, 0);
+}
+
+.button {
+  float: left;
+  min-width: 150px;
+  max-width: 250px;
+  display: block;
+  margin: 1em;
+  padding: 1em 2em;
+  border: none;
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+  outline: none;
+}
+.button > span {
+  vertical-align: middle;
+}
+
+.button--round-s {
+  border-radius: 5px;
+}

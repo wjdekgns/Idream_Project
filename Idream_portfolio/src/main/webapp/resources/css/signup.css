@@ -1,0 +1,54 @@
+body {
+	 background-image: linear-gradient(108deg, #eff7ff 0%, white 100%);
+}
+
+label {
+	font-family: 'GyeonggiTitleM';
+	color: #333;
+}
+
+placeholder, span, #btnJoin, #email_Select {
+	font-family: 'NanumBarunGothic';
+}
+
+#email {
+	width: 20%;
+	display: inline-block;
+}
+
+#sample4_postcode {
+	width: 20%;
+	display: inline-block;
+}
+
+#sample4_jibunAddress, #sample4_roadAddress {
+	width: 40%;
+	display: inline-block;
+}
+
+#sample4_detailAddress, #sample4_extraAddress {
+	width: 40%;
+	display: inline-block;
+}
+
+.d_form {
+	margin: 5px 0;
+}
+
+.select {
+	text-align: center;
+}
+
+#informationConsent {
+	text-align: justify;
+}
+#addressButton, #email_Select {
+	width: 15%;
+	display: inline-block;
+}
+
+@media screen and (max-width: 800px) {
+    #addressButton, #email_Select {
+		width: 30%;
+	}
+}

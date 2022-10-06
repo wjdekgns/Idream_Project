@@ -1,0 +1,244 @@
+
+
+
+
+/* (min-width 가로 해상도가 375px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 575px 작은 화면에 적용) */
+@media ( min-width : 375px) and (max-width: 575px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 100% !important;
+      margin: 0 auto !important;
+   }
+
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+   
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 49% !important;
+      text-overflow: ellipsis;
+   }
+   
+   .notice_list_font_size {
+      font-size: 12px;
+   }
+}
+
+/* (min-width 가로 해상도가 576px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 767px 작은 화면에 적용) */
+@media ( min-width : 576px) and (max-width: 767px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 75% !important;
+      margin: 0 auto !important;
+   }
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+   
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 53% !important;
+   }   
+   
+   .notice_list_font_size {
+      font-size: 12px;
+   }
+}
+
+/* (min-width 가로 해상도가 768px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 991px 작은 화면에 적용) */
+@media ( min-width : 768px) and (max-width: 991px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 70% !important;
+      margin: 0 auto !important;
+   }
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+   
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 54% !important;
+   }   
+   
+   .notice_list_font_size {
+      font-size: 12px;
+      
+   }
+}
+
+/* (min-width 가로 해상도가 992px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 1199px 작은 화면에 적용) */
+@media ( min-width : 992px) and (max-width: 1199px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 60% !important;
+      margin: 0 auto !important;
+   }
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+      
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 58% !important;
+   }   
+   
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+}
+
+/* (min-width 가로 해상도가 1200px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 1399px 작은 화면에 적용) */
+@media ( min-width : 1200px) and (max-width: 1399px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 60% !important;
+      margin: 0 auto !important;
+   }
+
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 63% !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+}
+
+/* (min-width 가로 해상도가 1400px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 1532px 작은 화면에 적용) */
+@media ( min-width : 1400px) and (max-width: 1532px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 60% !important;
+      margin: 0 auto !important;
+   }
+
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 68% !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+}
+
+/* (min-width 가로 해상도가 1600px 보다 큰 화면에 적용) and  (max-width 가로 해상도가 1799px 작은 화면에 적용) */
+@media ( min-width : 1533px) and (max-width: 1799px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 60% !important;
+      margin: 0 auto !important;
+   }
+
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 68% !important;
+   }
+
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 18% !important;
+   }
+}
+
+@media ( min-width : 1800px) {
+   /* 헤더 */
+   .notice_wrapper {
+      width: 60% !important;
+      margin: 0 auto !important;
+   }
+   
+   /* 헤더페이지 */
+   .notice_page {
+      margin-left: 0 !important;
+   }
+         
+   /* 공지사항 작성자 */
+   .boardwriter {
+      display: inline-block !important;
+      width: 20% !important;
+   }
+   
+   /* 공지사항 제목 */
+   .boardtitle {
+      display: inline-block !important;
+      width: 68% !important;
+   }   
+   
+}
+
+.notice_list_font_size th {
+      text-align: center !important;      
+   }
+
+.notice_list_font_size td {
+      text-align: center !important;
+      vertical-align: middle !important;      
+   }
+
+.form-control{
+   margin: 0 5px;   
+}
+
+.noticeregDate {
+   
+}
+
+.noticeupdateDate {
+   
+}
